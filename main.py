@@ -1,5 +1,10 @@
 import discord
 import re
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('TOKEN')
 
 
 class MyClient(discord.Client):
@@ -27,4 +32,4 @@ class MyClient(discord.Client):
 
 
 bot = MyClient()
-bot.run('insert token')
+bot.run(TOKEN)
