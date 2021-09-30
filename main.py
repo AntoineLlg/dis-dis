@@ -1,13 +1,13 @@
 import discord
 import re
 
-class MyClient(discord.Client) :
-    def __init__(self,*args,**kwargs):
-        super().__init__(*args,**kwargs)
-        
-        
-    async def on_message(self,message):
-        if message.author == self.user :
+
+class MyClient(discord.Client):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    async def on_message(self, message):
+        if message.author == self.user:
             return
         else:
             speak = re.compile("[dD][iyIY][a-zA-ZéèêàÉÈÀ]+")
@@ -21,7 +21,7 @@ class MyClient(discord.Client) :
             for match in it:
                 mot = match.group()
                 bord = 3
-                if mot[1] in ['h','H']:
+                if mot[1] in ['h', 'H']:
                     bord = 4
                 await message.channel.send(mot[bord:].upper())
 
